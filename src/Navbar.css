@@ -9,6 +9,14 @@
   margin: 2rem;
 }
 
+.login{
+  margin-left: 250px;
+}
+
+.signup{
+  margin-left: 20px;
+}
+
 .Dropdown-control {
   padding: 1px 52px 8px 10px;
 }

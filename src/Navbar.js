@@ -5,7 +5,7 @@ import { faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import Clock from "./DateTime";
-
+import { Link } from "react-router-dom";
 
 
 function Navbar() {
@@ -79,10 +79,22 @@ function Navbar() {
         <div className="line2"></div>
         <div className="line3"></div>
       </div>
-      <div className="social-buttons">
+      <div className="social-buttons">  
         <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
         <a href="#" class="gmail"><i class="fas fa-envelope"></i></a>
         <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+
+      <div className="login">
+      <button className="loginbutton">Login</button> 
+      </div>
+
+      <div className="signup">
+          
+    
+  <button className="signupbutton">Sign Up</button>
+  
+
       </div>
     </nav>
   );

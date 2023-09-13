@@ -1,18 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Books from './Books.js'; // Create this component
-import BookDetails from './BookDetails.js'; // Create this component
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Books from './Books.js';
+import BookDetails from './BookDetails.js';
+import Navbar from './Navbar.js';
+import Signup from './Signup.js'; // Import the Signup module
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Books />} />
-        <Route path="/book/:bookId" element={<BookDetails />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Navbar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Books />} />
+          <Route path="/book/:bookId" element={<BookDetails />} />
+          <Route path="/signup" element={<Signup />} />
 
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
