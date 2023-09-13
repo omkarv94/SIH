@@ -1,6 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import './Bookdetails.css'
+import "./Navbar.js"
+import Navbar from './Navbar.js';
+
 
 
 const BookDetails = () => {
@@ -8,7 +11,7 @@ const BookDetails = () => {
         {
             bookId: '1',
             title: "Medical Book Title 1",
-            imageUrl: "https://example.com/book-image1.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 1",
             publicationDate: "2023-09-13",
             domain: "Medicine",
@@ -24,7 +27,7 @@ const BookDetails = () => {
         {
             bookId: '2',
             title: "Medical Book Title 2",
-            imageUrl: "https://example.com/book-image2.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 2",
             publicationDate: "2023-09-15",
             domain: "Medicine",
@@ -40,7 +43,7 @@ const BookDetails = () => {
         {
             bookId: '3',
             title: "Medical Book Title 3",
-            imageUrl: "https://example.com/book-image3.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 3",
             publicationDate: "2023-09-17",
             domain: "Medicine",
@@ -56,7 +59,7 @@ const BookDetails = () => {
         {
             bookId: '4',
             title: "Medical Book Title 4",
-            imageUrl: "https://example.com/book-image4.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 4",
             publicationDate: "2023-09-19",
             domain: "Medicine",
@@ -72,7 +75,7 @@ const BookDetails = () => {
         {
             bookId: '5',
             title: "Medical Book Title 5",
-            imageUrl: "https://example.com/book-image5.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 5",
             publicationDate: "2023-09-21",
             domain: "Medicine",
@@ -100,30 +103,34 @@ const BookDetails = () => {
         return <div>Book not found</div>;
     }
     return (
-        <div className="book-details-container">
-            <div className="book-image">
-                <img src={book.imageUrl} alt={book.title} />
-            </div>
-            <div className="book-info">
-                <h1>{book.title}</h1>
-                <p>Publication: {book.publication}</p>
-                <p>Publication Date: {book.publicationDate}</p>
-                <p>Domain: {book.domain}</p>
-            </div>
-            <div className="ratings">
-                <div className="user-ratings">
-                    <h2>User Ratings</h2>
-                    <p>Overall Rating: {book.userOverallRating}</p>
-                    <p>Completeness: {book.userCompletenessRating}</p>
-                    <p>Relevancy to Domain: {book.userRelevancyRating}</p>
-                    <p>Clarity of Education: {book.userClarityRating}</p>
+        <div>
+            <Navbar />            
+            <div className="book-details-container">
+
+                <div className="book-image">
+                    <img src={book.imageUrl} alt={book.title} />
                 </div>
-                <div className="expert-ratings">
-                    <h2>Expert Ratings</h2>
-                    <p>Overall Rating: {book.expertOverallRating}</p>
-                    <p>Completeness: {book.expertCompletenessRating}</p>
-                    <p>Relevancy to Domain: {book.expertRelevancyRating}</p>
-                    <p>Clarity of Education: {book.expertClarityRating}</p>
+                <div className="book-info">
+                    <h1>{book.title}</h1>
+                    <p>Publication: {book.publication}</p>
+                    <p>Publication Date: {book.publicationDate}</p>
+                    <p>Domain: {book.domain}</p>
+                </div>
+                <div className="ratings">
+                    <div className="user-ratings">
+                        <h2>User Ratings</h2>
+                        <p>Overall Rating: {book.userOverallRating}</p>
+                        <p>Completeness: {book.userCompletenessRating}</p>
+                        <p>Relevancy to Domain: {book.userRelevancyRating}</p>
+                        <p>Clarity of Education: {book.userClarityRating}</p>
+                    </div>
+                    <div className="expert-ratings">
+                        <h2>Expert Ratings</h2>
+                        <p>Overall Rating: {book.expertOverallRating}</p>
+                        <p>Completeness: {book.expertCompletenessRating}</p>
+                        <p>Relevancy to Domain: {book.expertRelevancyRating}</p>
+                        <p>Clarity of Education: {book.expertClarityRating}</p>
+                    </div>
                 </div>
             </div>
         </div>
