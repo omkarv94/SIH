@@ -1,11 +1,18 @@
 import React from "react";
-import Navbar from "./Navbar";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Books from './Books.js'; // Create this component
+import BookDetails from './BookDetails.js'; // Create this component
+
 
 function App() {
   return (
-    <div>
-      <Navbar />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Books />} />
+        <Route path="/book/:bookId" element={<BookDetails />} />
+      </Routes>
+    </Router>
+
   );
 }
 

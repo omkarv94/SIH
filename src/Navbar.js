@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import Clock from "./DateTime";
+
+
 
 function Navbar() {
   const options = ['English', 'Hindi'];
@@ -33,7 +36,7 @@ function Navbar() {
   return (
     <nav className="nav">
       <div className="Time">
-        TIME
+        <Clock />
       </div>
       <a href="#" className="nav__brand">
         Skip to main content
@@ -44,7 +47,7 @@ function Navbar() {
         ) : (
           <FontAwesomeIcon icon={faVolumeMute} className="sound-icon" />
         )}
-      </div>      
+      </div>
       <ul className={active}>
         <li className="nav__item">
           <a href="#" className="nav__link">
@@ -68,13 +71,18 @@ function Navbar() {
           <button className="btn2">A</button>
         </li>
         <li>
-        <Dropdown options={options} onChange={(selectedOption) => console.log(selectedOption)} value={defaultOption} placeholder="Select an option" />
+          <Dropdown options={options} onChange={(selectedOption) => console.log(selectedOption)} value={defaultOption} placeholder="Select an option" />
         </li>
       </ul>
       <div onClick={navToggle} className={icon}>
         <div className="line1"></div>
         <div className="line2"></div>
         <div className="line3"></div>
+      </div>
+      <div className="social-buttons">
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="gmail"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
       </div>
     </nav>
   );
