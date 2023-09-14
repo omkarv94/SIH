@@ -58,5 +58,18 @@ mongoose
 
     /* ADD DATA ONE TIME ONLY */
     //  Book.insertMany(bookData);
+    //UPDATE - picturepath
+    // Define the picturePath value you want to set for all books
+  const newPicturePath = './Public/assets/Book.jpg';
+  // Update all books with the newPicturePath
+  /////// Update all books with the newPicturePath
+  // Book.updateMany({}, { picturePath: newPicturePath })
+  // .then((result) => {
+  //   console.log("Books updated successfully:", result);
+  // })
+  // .catch((err) => {
+  //   console.error("Error updating books:", err);
+  // });
+
   })
   .catch((error) => console.log(`${error} did not connect`));

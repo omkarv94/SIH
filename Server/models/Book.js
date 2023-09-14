@@ -46,7 +46,8 @@ const BookSchema = new mongoose.Schema({
       type: String,
       unique: true, // Ensure ISBN is unique for each book
       required: true,
-    }
+    },
+    picturePath: String, // Add the picturePath field to store the link
 });
 
 
