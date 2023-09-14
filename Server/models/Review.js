@@ -15,7 +15,8 @@ const ReviewSchema = new mongoose.Schema({
     ],
       description : String,
       overallRating: Number, // Weighted mean of all the reviews
-      bookId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book', required: true }], // Reference to the Book
+      // bookId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book', required: true }], // Reference to the Book
+      // bookId: Number,
       userId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }], // Reference to the User
       isExpert: Boolean, // To distinguish student reviews and expert reviews  (isExpert = (User.userType == Expert))
 });

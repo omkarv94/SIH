@@ -1,5 +1,6 @@
-import {Review, User, Book} from '../models/Review.js'; // Import your Review model
-
+import Review from '../models/Review.js'; // Import your Review model
+import Book from '../models/Book.js';
+import User from '../models/User.js';
 
 // Function to update the user's MyReview cart
 const updateUserMyReviewCart = async (userId, newReview) => {
@@ -24,23 +25,56 @@ const updateBookRatings = async (bookId, newReview) => {
     }
   };
 
+// Function to calculate the overall rating based on assessment scale and weights
+const calculateOverallRating = (assessmentScale) => {
+  // Define the assessment scale parameters and their weights
+  const assessmentScaleWeights = {
+    'Accuracy of Content': 0.2, // Example weights (adjust as needed)
+    'Relevance to Syllabus': 0.15,
+    'Clarity of Explanations':0.15 ,
+    'Up-to-Date Information':0.2,
+    'Educational Value':0.3
+  };
+
+  // Calculate the weighted sum of assessment scale parameters
+  let weightedSum = 0;
+  let totalWeight = 0;
+
+  for (const parameter of assessmentScale) {
+    const { parameter: paramName, rating } = parameter;
+
+    if (paramName in assessmentScaleWeights) {
+      const weight = assessmentScaleWeights[paramName];
+      weightedSum += rating * weight;
+      totalWeight += weight;
+    }
+  }
+
+  // Calculate the overall rating (weighted mean)
+  const overallRating = totalWeight > 0 ? weightedSum / totalWeight : 0;
+
+  return overallRating;
+};
+
 export const createReview = async (req, res) => {
   try {
     const {
       assessmentScale,
       description,
-      overallRating,
-      bookId, // Assuming you receive bookId from the frontend
+      // bookId, // Assuming you receive bookId from the frontend
       userId, // Assuming you receive userId from the frontend
       isExpert, // Assuming you receive isExpert from the frontend
     } = req.body;
+
+    // Calculate the overall rating
+    const overallRating = calculateOverallRating(assessmentScale);
 
     // Create a new instance of the Review model
     const newReview = new Review({
       assessmentScale,
       description,
       overallRating,
-      bookId,
+      // bookId,
       userId,
       isExpert,
     });
@@ -48,7 +82,7 @@ export const createReview = async (req, res) => {
     // Save the new review to the database
     const savedReview = await newReview.save();
 
-    await updateBookRatings(bookId, savedReview);
+    // await updateBookRatings(bookId, savedReview);
     await updateUserMyReviewCart(userId, savedReview);
 
     res.status(201).json(savedReview); // Send the saved review as a JSON response

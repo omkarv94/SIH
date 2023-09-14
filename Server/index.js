@@ -10,7 +10,9 @@ import path from  "path";
 import { fileURLToPath } from "url";
 // import authUser from "./routes/authUser.js";
 import { loginUser, registerUSER } from "./controllers/auth.js";
-
+import { createReview} from "./controllers/reviewUser.js";
+import bookData from "./data/index.js";
+import Book from './models/Book.js';
 
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url); //to grab file url
@@ -30,7 +32,7 @@ app.use(cors());
 /* ROUTES */
 app.post("/registerUser", registerUSER); //Normal User registration
 app.post("/loginUser", loginUser);   //Normal User login.....
-
+app.post("/createReview",createReview);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
@@ -43,7 +45,6 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME ONLY */
-    // User.insertMany(users);
-    // Post.insertMany(posts);
+    //  Book.insertMany(bookData);
   })
   .catch((error) => console.log(`${error} did not connect`));
