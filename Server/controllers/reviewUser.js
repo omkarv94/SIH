@@ -46,8 +46,41 @@ const updateBookRatings = async (bookId, newReview) => {
 
     const updatedOverallRating = totalRatings[0]?.averageRating || 0;
 
-    // Update the book's overallRating field
+    // Update the book's overallRatingUser field
     book.overallRatingUser = updatedOverallRating;
+
+    // Initialize an object to store assessment scale ratings
+    const assessmentScaleRatings = {};
+
+    // Iterate through existing reviews to calculate assessment scale ratings
+    for (const reviewId of book.reviews) {
+      const review = await Review.findById(reviewId);
+
+      if (review && review.assessmentScale) {
+        for (const parameter of review.assessmentScale) {
+          const { parameter: paramName, rating } = parameter;
+
+          if (paramName in assessmentScaleRatings) {
+            // Calculate the new sum of ratings for the parameter
+            assessmentScaleRatings[paramName].sum += rating;
+            // Increment the count of reviews for the parameter
+            assessmentScaleRatings[paramName].count += 1;
+          } else {
+            // Initialize the parameter in the assessmentScaleRatings object
+            assessmentScaleRatings[paramName] = {
+              sum: rating,
+              count: 1,
+            };
+          }
+        }
+      }
+    }
+
+    // Calculate the mean of assessment scale ratings
+    book.subReviewsUser = Object.entries(assessmentScaleRatings).map(([paramName, { sum, count }]) => ({
+      parameter: paramName,
+      averageRating: sum / count,
+    }));
 
     // Save the updated book document
     await book.save();
@@ -57,6 +90,9 @@ const updateBookRatings = async (bookId, newReview) => {
     throw error;
   }
 };
+
+
+
 
 
 // Function to calculate the overall rating based on assessment scale and weights

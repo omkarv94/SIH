@@ -17,6 +17,7 @@ import { createReview} from "./controllers/reviewUser.js";
 import {getBooks} from "./controllers/Book.js";
 import bookData from "./data/index.js";
 import Book from './models/Book.js';
+import { verifyToken } from "./middleware/auth.js";
 
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url); //to grab file url
@@ -36,7 +37,7 @@ app.use(cors());
 /* Endpoints */
 app.post("/registerUser", registerUSER); //Normal User registration
 app.post("/loginUser", loginUser);   //Normal User login.....
-app.post("/createReview",createReview);
+app.post("/createReview",verifyToken, createReview);
 app.get("/getBooks", getBooks)
 
 /* ROUTES */
