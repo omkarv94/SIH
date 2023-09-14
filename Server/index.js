@@ -8,7 +8,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from  "path";
 import { fileURLToPath } from "url";
-// import authUser from "./routes/authUser.js";
+import authUser from "./routes/authUser.js";
+import createReviews from "./routes/CreateReviews.js";
+import auth from "./routes/auth.js";
 import { loginUser, registerUSER } from "./controllers/auth.js";
 import { createReview} from "./controllers/reviewUser.js";
 import bookData from "./data/index.js";
@@ -29,10 +31,15 @@ app.use(cors());
 // app.use("/assets", express.static(path.join(__dirname, "public/assets"))); //to store images locally
 
 
-/* ROUTES */
+/* Endpoints */
 app.post("/registerUser", registerUSER); //Normal User registration
 app.post("/loginUser", loginUser);   //Normal User login.....
 app.post("/createReview",createReview);
+
+/* ROUTES */
+app.use("/auth", auth);
+app.use("/authUser", authUser);
+app.use("/createReview", createReviews);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
