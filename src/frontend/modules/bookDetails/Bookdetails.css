@@ -1,0 +1,164 @@
+/* CSS for the book details container */
+.book-details-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+}
+
+/* CSS for the book image container */
+.book-image-container {
+    border-radius: 10%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 180px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+/* CSS for the book info */
+.book-info {
+    flex: 1;
+}
+
+/* CSS for the overall rating */
+.overall-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* CSS for the book image */
+.book-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit :cover;
+    /* Fill the container while maintaining aspect ratio */
+}
+
+/* CSS for the rating sections */
+.ratings {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* CSS for each rating section (expert and user) */
+.expert-ratings,
+.user-ratings {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS for the rating section headings */
+.expert-ratings h2,
+.user-ratings h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* CSS for individual rating items (aspect and star rating) */
+.expert-ratings div,
+.user-ratings div {
+    margin-bottom: 10px;
+}
+
+/* CSS for the Summary section */
+.summary-section {
+    background-color: #f4f4f4;
+    /* Background color */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 20px;
+    /* Padding for content */
+    margin: 20px;
+    /* Margin to separate it from other sections */
+}
+
+.summary-section h2 {
+    font-size: 24px;
+    /* Adjust font size for the heading */
+    margin-bottom: 10px;
+    /* Space below the heading */
+}
+
+.summary-section p {
+    font-size: 16px;
+    /* Adjust font size for the summary text */
+    line-height: 1.5;
+    /* Line height for better readability */
+}
+
+/* CSS for the parent container */
+.reviews-container {
+    /* Use flexbox for layout */
+    justify-content: space-evenly;
+    /* Separate the two containers */
+    border-radius: 10px;
+    /* Rounded corners for the parent container */
+    background-color: #f4f4f4;
+    /* Background color for the parent container */
+    padding: 20px;
+    /* Padding for the parent container */
+    margin: 20px;
+    /* Margin to separate it from other sections */
+}
+
+.hedingButton {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviews {
+    display: flex;
+}
+
+/* CSS for the review containers */
+.review-container {
+    /* min-width: 320px; */
+    display: flex;
+    margin: 10px 20px 20px 0px;
+    flex-basis: calc(50%);
+    /* Each container takes 50% width with spacing */
+    padding: 10px;
+    /* Padding for each review container */
+    border-radius: 10px;
+    /* Rounded corners for each review container */
+    background-color: #fff;
+    /* Background color for each review container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Box shadow for each review container */
+}
+
+
+
+
+
+/* Add additional styling as needed */
+
+/* Style for the "Add Review" button */
+.add-review-button {
+    text-align: right;
+}
+
+.add-review-button button {
+    background-color: #014a91;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.add-review-button button:hover {
+    background-color: #095cb5;
+}
