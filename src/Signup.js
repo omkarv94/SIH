@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./Signup.css"; 
 function Registration() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -38,9 +38,11 @@ function Registration() {
 
   return (
     <div className="registration-container">
-      <h2>Registration</h2>
+        <div className="title"> <h2>Registration</h2></div>
+     
       <form onSubmit={handleRegistrationSubmit}>
-        <div className="form-group">
+       
+        <div className="firstname">
           <label htmlFor="firstName">First Name:</label>
           <input
             type="text"
@@ -51,7 +53,7 @@ function Registration() {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="lastname">
           <label htmlFor="lastName">Last Name:</label>
           <input
             type="text"
@@ -62,7 +64,7 @@ function Registration() {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="email">
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -73,7 +75,7 @@ function Registration() {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="password">
           <label htmlFor="password">Password:</label>
           <input
             type="password"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./Login.css"
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,8 @@ function Login() {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+        <div className="title"><h2>Login</h2></div>
+      
       <form onSubmit={handleLoginSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
