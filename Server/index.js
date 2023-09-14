@@ -14,7 +14,7 @@ import bookRoute from "./routes/Book.js"
 import auth from "./routes/auth.js";
 import { loginUser, registerUSER } from "./controllers/auth.js";
 import { createReview} from "./controllers/reviewUser.js";
-import {getBooks} from "./controllers/Book.js";
+import {getBooks, getBookFromID} from "./controllers/Book.js";
 import bookData from "./data/index.js";
 import Book from './models/Book.js';
 import { verifyToken } from "./middleware/auth.js";
@@ -38,7 +38,8 @@ app.use(cors());
 app.post("/registerUser", registerUSER); //Normal User registration
 app.post("/loginUser", loginUser);   //Normal User login.....
 app.post("/createReview",verifyToken, createReview);
-app.get("/getBooks", getBooks)
+app.get("/getBooks", getBooks);
+app.get("/:BookId", getBookFromID);
 
 /* ROUTES */
 app.use("/auth", auth);
