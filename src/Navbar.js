@@ -35,6 +35,14 @@ function Navbar() {
 
   return (
     <nav className="nav">
+      <div className="homebutton">
+      <Link to="/">
+  <button className="homebutton">Home</button>
+    </Link>
+      </div>
+
+
+
       <div className="Time">
         <Clock />
       </div>
@@ -86,15 +94,15 @@ function Navbar() {
       </div>
 
       <div className="login">
+        <Link to="/login">
       <button className="loginbutton">Login</button> 
+      </Link>
       </div>
 
       <div className="signup">
-          
-    
+      <Link to="/signup">
   <button className="signupbutton">Sign Up</button>
-  
-
+    </Link>
       </div>
     </nav>
   );
