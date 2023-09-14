@@ -6,15 +6,13 @@ import dotenv from "dotenv";
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
-import path from  "path";
+import path from "path";
 import { fileURLToPath } from "url";
 import authUser from "./routes/authUser.js";
 import reviewsRoute from "./routes/CreateReviews.js";
 import auth from "./routes/auth.js";
 import { loginUser, registerUSER } from "./controllers/auth.js";
-import { createReview} from "./controllers/reviewUser.js";
-import bookData from "./data/index.js";
-import Book from './models/Book.js';
+import { createReview } from "./controllers/reviewUser.js";
 
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url); //to grab file url
@@ -34,7 +32,7 @@ app.use(cors());
 /* Endpoints */
 app.post("/registerUser", registerUSER); //Normal User registration
 app.post("/loginUser", loginUser);   //Normal User login.....
-app.post("/createReview",createReview);
+app.post("/createReview", createReview);
 
 /* ROUTES */
 app.use("/auth", auth);
@@ -42,7 +40,7 @@ app.use("/authUser", authUser);
 app.use("/reviewsRoute", reviewsRoute);
 
 /* MONGOOSE SETUP */
-const PORT = process.env.PORT || 6001;
+const PORT = process.env.PORT || 3001;
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,

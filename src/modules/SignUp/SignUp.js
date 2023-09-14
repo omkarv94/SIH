@@ -23,7 +23,6 @@ function SignUp() {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
-
     const handleRegistrationSubmit = async (e) => {
         e.preventDefault();
 
@@ -37,20 +36,12 @@ function SignUp() {
         // You can send a request to your backend to create a new user account.
         // If the registration is successful, you can redirect the user to the login page or their dashboard.
         try {
-            // Make a POST request to your backend registration endpoint
-
-
-
-            const response = await fetch(`http://localhost:3000/auth/registerUser`, {
-                method: "POST",
-                body: {
-                    firstName,
-                    lastName,
-                    email,
-                    password
-                },
-
-
+            // Make a POST request to your backend registration endpoint using Axios
+            const response = await axios.post(`http://localhost:3001/registerUser`, {
+                firstName,
+                lastName,
+                email,
+                password
             });
 
             // Assuming your backend returns a success message or user data
@@ -59,13 +50,50 @@ function SignUp() {
             // You can redirect the user to the login page or their dashboard here
             // Example: window.location.href = '/login';
 
-
         } catch (error) {
             console.error('Registration failed:', error.response.data);
             // Handle registration failure, e.g., show an error message to the user
         }
-
     };
+
+
+    // const handleRegistrationSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     // Here, you can add logic to handle the registration submission.
+    //     // For simplicity, let's just log the entered data.
+    //     console.log("First Name:", firstName);
+    //     console.log("Last Name:", lastName);
+    //     console.log("Email:", email);
+    //     console.log("Password:", password);
+
+    //     // You can send a request to your backend to create a new user account.
+    //     // If the registration is successful, you can redirect the user to the login page or their dashboard.
+    //     try {
+    //         // Make a POST request to your backend registration endpoint
+    //         const response = await fetch(`http://localhost:3001/registerUser`, {
+    //             method: "POST",
+    //             body: {
+    //                 firstName,
+    //                 lastName,
+    //                 email,
+    //                 password
+    //             },
+    //         });
+
+    //         // Assuming your backend returns a success message or user data
+    //         console.log('Registration successful:', response.data);
+
+    //         // You can redirect the user to the login page or their dashboard here
+    //         // Example: window.location.href = '/login';
+
+
+    //     } catch (error) {
+    //         console.error('Registration failed:', error.response.data);
+    //         // Handle registration failure, e.g., show an error message to the user
+    //     }
+
+    // };
 
     return (
         <div className="registration-container">
