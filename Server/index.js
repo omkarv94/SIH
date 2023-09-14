@@ -9,7 +9,7 @@ import morgan from "morgan";
 import path from  "path";
 import { fileURLToPath } from "url";
 import authUser from "./routes/authUser.js";
-import createReviews from "./routes/CreateReviews.js";
+import reviewsRoute from "./routes/CreateReviews.js";
 import auth from "./routes/auth.js";
 import { loginUser, registerUSER } from "./controllers/auth.js";
 import { createReview} from "./controllers/reviewUser.js";
@@ -39,7 +39,7 @@ app.post("/createReview",createReview);
 /* ROUTES */
 app.use("/auth", auth);
 app.use("/authUser", authUser);
-app.use("/createReview", createReviews);
+app.use("/reviewsRoute", reviewsRoute);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
