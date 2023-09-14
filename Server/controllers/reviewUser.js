@@ -15,15 +15,49 @@ const updateUserMyReviewCart = async (userId, newReview) => {
 
 // Function to update the Book entity's ratings
 const updateBookRatings = async (bookId, newReview) => {
-    try {
-      const book = await Book.findById(bookId);
-      // Update the book's overall rating and assessment scale based on newReview
-      // ...
-      await book.save();
-    } catch (error) {
-      throw error;
+  try {
+    // Fetch the book by its ID
+    const book = await Book.findById(bookId);
+
+    if (!book) {
+      throw new Error("Book not found");
     }
-  };
+
+    // Create a new Review document and save it to the database
+    const savedReview = await new Review(newReview).save();
+
+    // Add the ObjectId of the saved review to the book's reviews array
+    book.reviews.push(savedReview._id);
+
+    // Calculate the updated overallRating for the book
+    const totalRatings = await Review.aggregate([
+      {
+        $match: {
+          _id: { $in: book.reviews },
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          averageRating: { $avg: "$overallRating" },
+        },
+      },
+    ]);
+
+    const updatedOverallRating = totalRatings[0]?.averageRating || 0;
+
+    // Update the book's overallRating field
+    book.overallRatingUser = updatedOverallRating;
+
+    // Save the updated book document
+    await book.save();
+
+    return book; // Optionally, you can return the updated book document.
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 // Function to calculate the overall rating based on assessment scale and weights
 const calculateOverallRating = (assessmentScale) => {
@@ -61,7 +95,7 @@ export const createReview = async (req, res) => {
     const {
       assessmentScale,
       description,
-      // bookId, // Assuming you receive bookId from the frontend
+      bookId, // Assuming you receive bookId from the frontend
       userId, // Assuming you receive userId from the frontend
       isExpert, // Assuming you receive isExpert from the frontend
     } = req.body;
@@ -74,16 +108,16 @@ export const createReview = async (req, res) => {
       assessmentScale,
       description,
       overallRating,
-      // bookId,
+      bookId,
       userId,
       isExpert,
     });
 
     // Save the new review to the database
-    const savedReview = await newReview.save();
+    // const savedReview = await newReview.save();
 
-    // await updateBookRatings(bookId, savedReview);
-    await updateUserMyReviewCart(userId, savedReview);
+    const savedReview = await updateBookRatings(bookId, newReview);  //Book ratings get updated
+    await updateUserMyReviewCart(userId, savedReview); //user myReviews get updated
 
     res.status(201).json(savedReview); // Send the saved review as a JSON response
 
