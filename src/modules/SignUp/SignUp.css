@@ -1,0 +1,52 @@
+/* Registration.css */
+.registration-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.title {
+    margin-top: 80px;
+}
+
+.firstname {
+
+    margin-bottom: 20px;
+}
+
+.lastname {
+    margin-top: 15px;
+}
+
+.email {
+    margin-top: 15px;
+}
+
+.password {
+    margin-top: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.registration-container button {
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
