@@ -10,9 +10,11 @@ import path from  "path";
 import { fileURLToPath } from "url";
 import authUser from "./routes/authUser.js";
 import reviewsRoute from "./routes/CreateReviews.js";
+import bookRoute from "./routes/Book.js"
 import auth from "./routes/auth.js";
 import { loginUser, registerUSER } from "./controllers/auth.js";
 import { createReview} from "./controllers/reviewUser.js";
+import {getBooks} from "./controllers/Book.js";
 import bookData from "./data/index.js";
 import Book from './models/Book.js';
 
@@ -35,11 +37,13 @@ app.use(cors());
 app.post("/registerUser", registerUSER); //Normal User registration
 app.post("/loginUser", loginUser);   //Normal User login.....
 app.post("/createReview",createReview);
+app.get("/getBooks", getBooks)
 
 /* ROUTES */
 app.use("/auth", auth);
 app.use("/authUser", authUser);
 app.use("/reviewsRoute", reviewsRoute);
+app.use("/bookRoute", bookRoute);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
