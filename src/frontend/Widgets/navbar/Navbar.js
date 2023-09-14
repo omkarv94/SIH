@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import Clock from "./DateTime";
+import Clock from "../dateTime/DateTime.js";
 
 
 

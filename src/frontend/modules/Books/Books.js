@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./Books.css"
+import Navbar from '../../Widgets/navbar/Navbar.js';
 
 const Books = () => {
     const booksData = [
         {
             bookId: '1',
             title: "Medical Book Title 1",
-            imageUrl: "https://example.com/book-image1.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 1",
             publicationDate: "2023-09-13",
             domain: "Medicine",
@@ -22,7 +24,7 @@ const Books = () => {
         {
             bookId: '2',
             title: "Medical Book Title 2",
-            imageUrl: "https://example.com/book-image2.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 2",
             publicationDate: "2023-09-15",
             domain: "Medicine",
@@ -38,7 +40,7 @@ const Books = () => {
         {
             bookId: '3',
             title: "Medical Book Title 3",
-            imageUrl: "https://example.com/book-image3.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 3",
             publicationDate: "2023-09-17",
             domain: "Medicine",
@@ -54,7 +56,7 @@ const Books = () => {
         {
             bookId: '4',
             title: "Medical Book Title 4",
-            imageUrl: "https://example.com/book-image4.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 4",
             publicationDate: "2023-09-19",
             domain: "Medicine",
@@ -70,7 +72,7 @@ const Books = () => {
         {
             bookId: '5',
             title: "Medical Book Title 5",
-            imageUrl: "https://example.com/book-image5.jpg",
+            imageUrl: "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=826&t=st=1694619054~exp=1694619654~hmac=88a142cbcdc40620d5e2fe2662ea41bf8d5f434b4834ff0130e19d4f5332283c",
             publication: "Medical Publisher 5",
             publicationDate: "2023-09-21",
             domain: "Medicine",
@@ -88,15 +90,21 @@ const Books = () => {
 
     return (
         <div>
-            <h1>Books</h1>
+            <Navbar />
             <div className="books-grid">
                 {booksData.map((book) => (
                     <Link to={`/book/${book.bookId}`} key={book.id} className="book-card">
-                        <h2>{book.title}</h2>
-                        {/* Add book cover and other book details here */}
+                        <img src={book.imageUrl} alt={book.title} className="book-cover" />
+                        <h2 className="book-title">{book.title}</h2>
+                        <p className="book-details">
+                            <span className="publication">{book.publication}</span>
+                            <span className="domain">{book.domain}</span>
+                            <span className="expert-rating">{book.expertOverallRating}</span>
+                        </p>
                     </Link>
                 ))}
             </div>
+
         </div>
     );
 };
